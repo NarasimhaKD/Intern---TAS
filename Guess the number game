@@ -1,0 +1,32 @@
+import random
+
+def guess_the_number():
+    target = random.randint(1, 100)
+    attempts = 0
+    score = 100
+    max_attempts = 10
+
+    while attempts < max_attempts:
+        guess = int(input("Guess a number between 1 and 100: "))
+        attempts += 1
+        if guess == target:
+            print(f"Congratulations! You guessed the number in {attempts} attempts.")
+            print(f"Your final score is {score}.")
+            break
+        elif guess > target:
+            print("Your guess is too high.")
+            score -= 10
+        else:
+            print("Your guess is too low.")
+            score -= 10
+
+    if attempts == max_attempts:
+        print(f"Sorry, you were not able to guess the number in {max_attempts} attempts.")
+        print(f"The target number was {target}.")
+        print(f"Your final score is {score}.")
+
+    play_again = input("Do you want to play again? (y/n): ")
+    if play_again.lower() == 'y':
+        guess_the_number()
+
+guess_the_number()
